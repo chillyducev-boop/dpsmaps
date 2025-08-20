@@ -1,0 +1,30 @@
+*{box-sizing:border-box}
+:root{--bg:#0b0e12;--fg:#e6e9ee;--mut:#98a1b2;--card:#11151b;--acc:#4cc9f0;--red:#ff6b6b;--green:#51cf66}
+html,body,#app,#map{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial}
+.btn{background:#1a1f27;color:var(--fg);border:1px solid #222b36;padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;border-color:#2c3441}
+.btn.xs{padding:4px 8px;font-size:12px}
+.link{color:var(--acc);text-decoration:none}
+.topbar{position:absolute;top:10px;left:10px;display:flex;gap:8px;z-index:1000}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-top-left-radius:14px;border-top-right-radius:14px;box-shadow:0 -8px 24px rgba(0,0,0,.4);z-index:900;padding:12px}
+.sheet.hidden{display:none}
+.sheet-handle{width:48px;height:4px;background:#2b3340;border-radius:2px;margin:0 auto 8px}
+.sheet-content h3{margin:6px 0 10px}
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.modal.hidden,.drawer.hidden{display:none}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5)}
+.modal-card{position:fixed;top:10%;left:50%;transform:translateX(-50%);width:min(720px,92%);background:var(--card);border:1px solid #232b36;border-radius:12px;padding:12px}
+.tabs{display:flex;gap:8px;margin-bottom:8px}
+.tabs button{background:#12161d;border:1px solid #222b36;color:var(--fg);padding:6px 10px;border-radius:8px}
+.tabs button.active{border-color:var(--acc)}
+.tab{padding:8px;border:1px dashed #2b3340;border-radius:8px}
+.tab.hidden{display:none}
+.tab label{display:block;margin:6px 0}
+.drawer-card{position:fixed;right:10px;top:60px;width:320px;background:var(--card);border:1px solid #2b3441;border-radius:10px;padding:10px;z-index:1000}
+.marker-badge{font-size:11px;color:#c8d0dc}
+.popup-actions{display:flex;gap:8px;margin-top:6px}
+.vote{display:inline-flex;align-items:center;gap:4px}
+.vote .yes{color:var(--green)}
+.vote .no{color:var(--red)}
+.leaflet-popup-content{color:var(--fg)}
