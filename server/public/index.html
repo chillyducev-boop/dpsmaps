@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>DPS Map — тёмная карта</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+  <div id="app">
+    <div id="map"></div>
+
+    <div class="topbar">
+      <button id="btnAdd" class="btn">＋ Добавить метку</button>
+      <button id="btnMine" class="btn">Мои метки</button>
+      <button id="btnSettings" class="btn">Настройки</button>
+    </div>
+
+    <div id="bottomSheet" class="sheet hidden">
+      <div class="sheet-handle"></div>
+      <div class="sheet-content">
+        <h3>Новая метка</h3>
+        <p>Выберите тип, затем кликните по карте для установки точки.</p>
+        <div class="type-grid">
+          <button data-type="dps" class="type-btn">ДПС</button>
+          <button data-type="dtp" class="type-btn">ДТП</button>
+          <button data-type="short" class="type-btn">Короткая</button>
+          <button data-type="camera" class="type-btn">Камера</button>
+          <button data-type="dir" class="type-btn">Направление</button>
+        </div>
+        <div id="dirChooser" class="hidden">
+          <label>Направление: </label>
+          <select id="dirSelect">
+            <option value="N">N</option>
+            <option value="E">E</option>
+            <option value="S">S</option>
+            <option value="W">W</option>
+          </select>
+        </div>
+        <label>Название <input id="postName" placeholder="необязательно"/></label>
+        <label>Описание <input id="postDesc" placeholder="необязательно"/></label>
+        <div class="sheet-actions">
+          <button id="btnCancel" class="btn ghost">Отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="settingsModal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-card">
+        <div class="tabs">
+          <button data-tab="profile" class="active">Профиль</button>
+          <button data-tab="map">Карта</button>
+          <button data-tab="filters">Фильтры</button>
+          <button data-tab="city">Город</button>
+          <button data-tab="notify">Уведомления</button>
+        </div>
+        <div class="tab-body">
+          <div class="tab" id="tab-profile">
+            <p>Статус: <span id="regStatus">проверяем...</span></p>
+            <p>
+              Ваш CID: <code id="cidShow"></code>
+              <button id="btnSetCid" class="btn xs">указать</button>
+            </p>
+            <a href="/admin.html" class="link">Админка</a>
+          </div>
+          <div class="tab hidden" id="tab-map">
+            <label>Тайлы:
+              <select id="tileSelect">
+                <option value="carto-dark">Carto Dark</option>
+                <option value="osm">OSM</option>
+              </select>
+            </label>
+            <label><input type="checkbox" id="trafficToggle" disabled/> Пробки (плейсхолдер)</label>
+          </div>
+          <div class="tab hidden" id="tab-filters">
+            <label><input type="checkbox" data-filter="dps" checked/> ДПС</label>
+            <label><input type="checkbox" data-filter="dtp" checked/> ДТП</label>
+            <label><input type="checkbox" data-filter="short" checked/> Короткие</label>
+            <label><input type="checkbox" data-filter="camera" checked/> Камеры</label>
+            <label><input type="checkbox" data-filter="dir" checked/> Направления</label>
+          </div>
+          <div class="tab hidden" id="tab-city">
+            <label>Город РФ:
+              <select id="citySelect">
+                <option value="">Автоцентр по мне</option>
+                <option value="MSC">Москва</option>
+                <option value="SPB">Санкт-Петербург</option>
+                <option value="KZN">Казань</option>
+                <option value="SMR">Самара</option>
+                <option value="KRD">Краснодар</option>
+                <option value="EKB">Екатеринбург</option>
+              </select>
+            </label>
+          </div>
+          <div class="tab hidden" id="tab-notify">
+            <label><input type="checkbox" id="notifyToggle" disabled/> Пуши (плейсхолдер)</label>
+            <label>Радиус: <input id="notifyRadius" type="number" value="2000"/> м</label>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button id="btnCloseSettings" class="btn">Закрыть</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mineDrawer" class="drawer hidden">
+      <div class="drawer-card">
+        <h3>Мои метки</h3>
+        <div id="mineList"></div>
+        <button id="btnCloseMine" class="btn ghost">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

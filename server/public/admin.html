@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>DPS Map — админка</title>
+  <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+  <div class="admin">
+    <h1>Админка</h1>
+    <div class="admin-login">
+      <input id="admToken" placeholder="Admin token"/>
+      <button id="admLogin" class="btn">Login</button>
+    </div>
+    <div class="admin-tabs">
+      <button data-tab="posts" class="btn xs">Метки</button>
+      <button data-tab="users" class="btn xs">Пользователи</button>
+      <button data-tab="complaints" class="btn xs">Жалобы</button>
+      <button data-tab="stats" class="btn xs">Статистика</button>
+    </div>
+    <div id="adminView"></div>
+  </div>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
